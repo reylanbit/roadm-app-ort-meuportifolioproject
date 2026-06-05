@@ -253,12 +253,10 @@ const About = () => {
 
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-3xl blur-2xl opacity-20" />
-              <div className="relative aspect-square bg-neutral-900 border border-neutral-800 rounded-3xl overflow-hidden">
-                <img
-                  src="/profile.jpg"
-                  alt="Darlann Santos"
-                  className="w-full h-full object-cover"
-                />
+              <div className="relative aspect-square bg-neutral-900 border border-neutral-800 rounded-3xl p-8">
+                <div className="w-full h-full bg-gradient-to-br from-neutral-800 to-neutral-900 rounded-2xl flex items-center justify-center">
+                  <Code2 className="w-32 h-32 text-neutral-700" />
+                </div>
               </div>
             </div>
           </div>
@@ -317,55 +315,6 @@ const Skills = () => {
 };
 
 const Projects = () => {
-  const [repos, setRepos] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetchRepos() {
-      try {
-        const response = await fetch('/api/github');
-        const data = await response.json();
-        setRepos(data);
-      } catch (error) {
-        console.error('Error fetching repos:', error);
-        // Fallback to static project
-        setRepos([
-          {
-            id: 1,
-            name: 'Roadm App - Meu Portfólio',
-            description: 'Aplicativo de portfólio profissional desenvolvido com Next.js e Tailwind CSS.',
-            url: 'https://github.com/reylanbit/roadm-app-ort-meuportifolioproject',
-            language: 'TypeScript',
-            stars: 0,
-            forks: 0
-          }
-        ]);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchRepos();
-  }, []);
-
-  const getLanguageColor = (language: string) => {
-    const colors: Record<string, string> = {
-      JavaScript: '#f1e05a',
-      TypeScript: '#2b7489',
-      Python: '#3572A5',
-      Go: '#00ADD8',
-      HTML: '#e34c26',
-      CSS: '#563d7c',
-      Vue: '#41B883',
-      React: '#61dafb',
-      Rust: '#dea584',
-      Java: '#b07219',
-      'C++': '#f34b7d',
-      C: '#555555'
-    };
-    return colors[language] || '#6e7681';
-  };
-
   return (
     <section id="projects" className="py-32">
       <div className="max-w-7xl mx-auto px-6">
@@ -376,73 +325,58 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Meus Projetos</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">Projetos Destacados</h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mb-6" />
           <p className="text-neutral-400 text-lg max-w-2xl">
-            Todos os meus repositórios do GitHub, atualizados em tempo real! 🚀
+            Uma seleção dos meus melhores trabalhos, demonstrando diferentes abordagens e tecnologias
           </p>
         </motion.div>
 
-        {loading ? (
-          <div className="flex justify-center py-20">
-            <div className="w-12 h-12 border-4 border-neutral-700 border-t-blue-500 rounded-full animate-spin"></div>
-          </div>
-        ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {repos.map((repo, idx) => (
-              <motion.a
-                key={repo.id}
-                href={repo.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: Math.min(idx * 0.05, 0.5) }}
-                className="group"
-              >
-                <div className="bg-neutral-900/50 border border-neutral-800 rounded-3xl p-6 hover:border-neutral-700 hover:bg-neutral-800/50 transition-all h-full flex flex-col">
-                  <div className="flex items-start justify-between mb-4">
-                    <h3 className="text-xl font-bold group-hover:text-blue-400 transition-colors truncate">
-                      {repo.name}
-                    </h3>
-                    <ExternalLink className="w-5 h-5 text-neutral-500 group-hover:text-blue-400 transition-colors flex-shrink-0 ml-2" />
-                  </div>
-                  <p className="text-neutral-400 text-sm mb-6 flex-grow line-clamp-3">
-                    {repo.description}
-                  </p>
-                  <div className="flex items-center gap-4 text-sm text-neutral-400">
-                    {repo.language && (
-                      <div className="flex items-center gap-2">
-                        <span
-                          className="w-3 h-3 rounded-full"
-                          style={{ backgroundColor: getLanguageColor(repo.language) }}
-                        />
-                        <span>{repo.language}</span>
-                      </div>
-                    )}
-                    {repo.stars > 0 && (
-                      <div className="flex items-center gap-1">
-                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
-                        <span>{repo.stars}</span>
-                      </div>
-                    )}
-                    {repo.forks > 0 && (
-                      <div className="flex items-center gap-1">
-                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
-                        </svg>
-                        <span>{repo.forks}</span>
-                      </div>
-                    )}
-                  </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: idx * 0.1 }}
+              className="group relative"
+            >
+              <div className="bg-neutral-900/50 border border-neutral-800 rounded-3xl overflow-hidden hover:border-neutral-700 transition-all">
+                <div className="relative aspect-video overflow-hidden">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/50 to-transparent" />
                 </div>
-              </motion.a>
-            ))}
-          </div>
-        )}
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-2 group-hover:text-blue-400 transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-neutral-400 text-sm mb-4">{project.description}</p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.tags.map((tag, i) => (
+                      <span
+                        key={i}
+                        className="px-3 py-1 bg-neutral-800 text-neutral-300 text-xs rounded-full"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <a
+                    href={project.link}
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-blue-400 transition-colors"
+                  >
+                    Ver projeto <ExternalLink className="w-4 h-4" />
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
