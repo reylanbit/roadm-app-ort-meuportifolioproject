@@ -5,10 +5,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   Github,
   Linkedin,
-  X,
+  Twitter,
   Mail,
   ExternalLink,
   Menu,
+  X,
   ChevronDown,
   Code2,
   Cpu,
@@ -16,7 +17,7 @@ import {
   Terminal,
   Sparkles,
   CheckCircle2,
-  MessageCircle
+  MessageSquare
 } from 'lucide-react';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
@@ -197,9 +198,9 @@ const Hero = () => {
             {[
               { Icon: Github, href: 'https://github.com/reylanbit?tab=repositories' },
               { Icon: Linkedin, href: 'https://www.linkedin.com/in/darlann-santos-187809124' },
-              { Icon: X, href: '#' },
-              { Icon: Mail, href: 'mailto:darlannasa@gmail.com' },
-              { Icon: MessageCircle, href: 'https://wa.me/5585981702374' }
+              { Icon: Twitter, href: '#' },
+              { Icon: Mail, href: 'https://mail.google.com/mail/?view=cm&fs=1&to=darlannasa@gmail.com' },
+              { Icon: MessageSquare, href: 'https://wa.me/5585981702374' }
             ].map(({ Icon, href }, i) => (
               <a
                 key={i}
@@ -507,7 +508,7 @@ const Footer = () => {
           {[
             { Icon: Github, href: 'https://github.com/reylanbit?tab=repositories' },
             { Icon: Linkedin, href: 'https://www.linkedin.com/in/darlann-santos-187809124' },
-            { Icon: X, href: '#' }
+            { Icon: Twitter, href: '#' }
           ].map(({ Icon, href }, i) => (
             <a
               key={i}
