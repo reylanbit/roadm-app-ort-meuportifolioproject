@@ -267,10 +267,12 @@ const About = () => {
 
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-3xl blur-2xl opacity-20" />
-              <div className="relative aspect-square bg-neutral-900 border border-neutral-800 rounded-3xl p-8">
-                <div className="w-full h-full bg-gradient-to-br from-neutral-800 to-neutral-900 rounded-2xl flex items-center justify-center">
-                  <Code2 className="w-32 h-32 text-neutral-700" />
-                </div>
+              <div className="relative aspect-square bg-neutral-900 border border-neutral-800 rounded-3xl overflow-hidden">
+                <img
+                  src="/profile.jpg"
+                  alt="Darlann Santos"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>
