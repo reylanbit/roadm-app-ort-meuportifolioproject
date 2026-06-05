@@ -57,6 +57,20 @@ const skills = [
 
 const projects = [
   {
+    title: 'Plataforma de E-commerce Escalável',
+    description: 'Sistema completo de e-commerce com micro-serviços, real-time inventory e pagamentos.',
+    tags: ['Next.js', 'Node.js', 'PostgreSQL', 'Stripe'],
+    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800',
+    link: '#'
+  },
+  {
+    title: 'Dashboard de Analytics em Tempo Real',
+    description: 'Painel de controle com visualizações interativas e streaming de dados.',
+    tags: ['React', 'D3.js', 'WebSocket', 'Python'],
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800',
+    link: '#'
+  },
+  {
     title: 'Roadm App - Meu Portfólio',
     description: 'Aplicativo de portfólio profissional desenvolvido com Next.js e Tailwind CSS.',
     tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
