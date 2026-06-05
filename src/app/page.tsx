@@ -255,7 +255,7 @@ const About = () => {
               <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-3xl blur-2xl opacity-20" />
               <div className="relative aspect-square bg-neutral-900 border border-neutral-800 rounded-3xl overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800"
+                  src="/profile.jpg"
                   alt="Darlann Santos"
                   className="w-full h-full object-cover"
                 />
