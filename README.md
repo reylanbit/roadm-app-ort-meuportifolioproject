@@ -63,8 +63,7 @@ Bem-vindo ao meu portfólio digital! Este é o espaço onde transformo ideias em
 
 - 🌐 GitHub: [reylanbit](https://github.com/reylanbit?tab=repositories)
 - 💼 LinkedIn: [Darlann Santos](https://www.linkedin.com/in/darlann-santos-187809124)
-- 📧 Email: [darlannasa@gmail.com](mailto:darlannasa@gmail.com)
-- 💬 WhatsApp: [+55 85 98170-2374](https://wa.me/5585981702374)
+- 📬 Contato: use o formulário no site
 
 ## 🚀 Como Executar Localmente
 

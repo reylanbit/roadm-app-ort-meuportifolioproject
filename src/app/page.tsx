@@ -400,19 +400,35 @@ const Projects = () => {
 };
 
 const Contact = () => {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', message: '', honeypot: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
+    setError(null);
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Erro ao enviar mensagem');
+      }
+
       setSubmitSuccess(true);
-      setFormData({ name: '', email: '', message: '' });
+      setFormData({ name: '', email: '', message: '', honeypot: '' });
       setTimeout(() => setSubmitSuccess(false), 3000);
-    }, 1500);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Erro desconhecido');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -447,6 +463,15 @@ const Contact = () => {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
+              <div style={{ display: 'none' }}>
+                <input
+                  type="text"
+                  name="honeypot"
+                  value={formData.honeypot}
+                  onChange={(e) => setFormData({ ...formData, honeypot: e.target.value })}
+                  placeholder="Não preencha este campo"
+                />
+              </div>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium mb-2">Nome</label>
@@ -482,6 +507,9 @@ const Contact = () => {
                   placeholder="Conte-me sobre o seu projeto..."
                 />
               </div>
+              {error && (
+                <p className="text-red-500 text-sm mt-2">{error}</p>
+              )}
               <button
                 type="submit"
                 disabled={isSubmitting}
