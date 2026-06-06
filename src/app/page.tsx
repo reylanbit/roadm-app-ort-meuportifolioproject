@@ -172,7 +172,7 @@ const Hero = () => {
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight">
             Desenvolvedor<br />
             <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-              Senior Full-Stack
+              Full-Stack
             </span>
           </h1>
           <p className="text-xl text-neutral-400 max-w-2xl mx-auto mb-10">
@@ -243,20 +243,20 @@ const About = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-lg text-neutral-300 leading-relaxed mb-6">
-                Com mais de 8 anos de experiência em desenvolvimento de software, tenho paixão por criar
+                Com mais de 2,5 anos de experiência em desenvolvimento de software, tenho paixão por criar
                 soluções que não só resolvem problemas, mas também encantam os usuários.
               </p>
               <p className="text-lg text-neutral-300 leading-relaxed mb-8">
-                Especialista em arquitetura de sistemas, otimização de performance e liderança técnica,
-                sempre buscando o equilíbrio perfeito entre código limpo e experiência do usuário.
+                Especialista em arquitetura de sistemas e otimização de performance, sempre buscando
+                o equilíbrio perfeito entre código limpo e experiência do usuário.
               </p>
 
               <div className="grid grid-cols-2 gap-6">
                 {[
-                  { label: 'Anos de Experiência', value: '8+' },
-                  { label: 'Projetos Concluídos', value: '100+' },
-                  { label: 'Clientes Satisfeitos', value: '50+' },
-                  { label: 'Tecnologias', value: '30+' }
+                  { label: 'Anos de Experiência', value: '2.5+' },
+                  { label: 'Projetos Concluídos', value: '30+' },
+                  { label: 'Clientes Satisfeitos', value: '20+' },
+                  { label: 'Tecnologias', value: '20+' }
                 ].map((stat, i) => (
                   <div key={i} className="p-6 bg-neutral-900/50 border border-neutral-800 rounded-2xl">
                     <div className="text-3xl font-bold text-white mb-1">{stat.value}</div>
