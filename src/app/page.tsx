@@ -345,11 +345,51 @@ const Footer = () => {
   );
 };
 
+const About = () => {
+  return (
+    <section className="px-6 md:px-12 lg:px-24 py-32 border-t border-neutral-800">
+      <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-16 items-center">
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          className="relative"
+        >
+          <div className="aspect-square bg-neutral-900 border border-neutral-800 overflow-hidden">
+            <img
+              src="/profile.jpg"
+              alt="Darlann Santos"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">Sobre Mim</h2>
+          <p className="text-lg text-neutral-300 mb-6 leading-relaxed">
+            Com mais de 2,5 anos de experiência em desenvolvimento de software, tenho paixão por criar
+            soluções que não só resolvem problemas, mas também encantam os usuários.
+          </p>
+          <p className="text-lg text-neutral-300 leading-relaxed">
+            Especialista em arquitetura de sistemas e otimização de performance, sempre buscando
+            o equilíbrio perfeito entre código limpo e experiência do usuário.
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-black text-white">
       <Hero />
       <Metrics />
+      <About />
       <Skills />
       <Testimonials />
       <Contact />
